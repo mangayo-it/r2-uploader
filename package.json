@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start": "vercel dev -l 7896",
+    "start": "vite preview --port 8080",
     "dev": "vite",
     "build:setup": "cp README.md public/setup-guide/index.md; bun run public/setup-guide/gen_markdown.js",
     "build": "bun run build:setup; vite build",
