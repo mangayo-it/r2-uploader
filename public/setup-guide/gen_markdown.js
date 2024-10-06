@@ -16,7 +16,7 @@ const html_template = `
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>R2 Uploader</title>
+  <title>MangaYo! Gestore Immagini App </title>
   <link rel="shortcut icon" href="https://emojicdn.elk.sh/🗄️" type="image/x-icon">
   <link rel="stylesheet" href="https://worker-shrill-water-2ae4.jw1dev.workers.dev/main.css">
   <link rel="stylesheet" href="https://worker-shrill-water-2ae4.jw1dev.workers.dev/pico.min.css">
@@ -25,7 +25,7 @@ const html_template = `
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Koulen&display=swap" rel="stylesheet">
-  <meta name="description" content="Web Interface for Cloudflare R2">
+  <meta name="description" content="MangaYo! Gestore Immagini App">
   <style>
     #app {
       max-width: 40rem;

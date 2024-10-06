@@ -1,6 +1,6 @@
 <template>
   <h1 class="max-w-[30rem] mx-auto">
-    <img src="https://emojicdn.elk.sh/🗄️" alt="logo" class="h-[1.5rem]"> R2 Uploader
+    <img src="https://app.mangayo.it/_next/image?url=%2Fapp_icon.webp&w=256&q=75" alt="logo" class="h-[1.5rem]"> MangaYo! Gestore Immagini App
   </h1>
 
   <div class="max-w-[30rem] mx-auto">
@@ -17,10 +17,7 @@
   </div>
 
   <footer class="text-center text-xs py-[2rem] opacity-80">
-    <span>Made by <a href="https://github.com/jw-12138">jw-12138</a> with ❤️
-      <br>
-      <a href="/setup-guide/">Setup Guide</a> | 
-      <a href="https://github.com/jw-12138/r2-uploader">Open Source</a></span>
+    <span>Tool customized for MangaYo! OS version <a href="https://github.com/jw-12138" target="_blank" rel="noopener noreferrer">jw-12138</a></span>  
   </footer>
 </template>
 

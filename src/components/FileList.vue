@@ -1,7 +1,7 @@
 <template>
   <form action="javascript:">
     <div class="font-bold italic">
-      <div> File List</div>
+      <div> Elenco File</div>
     </div>
 
     <div class="mt-4 mb-4 flex items-center flex-wrap space-x-2">
@@ -12,7 +12,7 @@
         @click="loadData"
         :aria-busy="loading"
         :disabled="loading || !endPoint"
-      >Refresh
+      >Aggiorna
       </button>
       <button
         class="text-xs inline-block w-auto outline mb-0"
@@ -20,7 +20,7 @@
         @click="toggleSelectMode"
         :disabled="fileList.length === 0"
       >
-        {{ selectMode && fileList.length ? 'Quit Selection Mode' : 'Selection Mode' }}
+        {{ selectMode && fileList.length ? 'Esci dalla Modalità Selezione' : 'Modalità Selezione' }}
       </button>
 
       <div v-show="selectMode" class="w-full flex space-x-2 mt-2">
@@ -29,7 +29,7 @@
           class="text-xs inline-block w-auto outline mb-0 border-red-500 text-red-500"
           style="padding: 0.3rem 0.5rem"
           @click="deleteSelectedFiles"
-        >Delete Selected
+        >Elimina Selezionati
         </button>
         <button
           :disabled="selectedFiles.length === 0"
@@ -47,7 +47,7 @@
         class="text-xs"
         v-show="!loading && fileList.length === 0 && !loadDataErrorText"
       >
-        Seems like we got nothing here.
+        Sembra che non ci sia nulla qui.
       </div>
       <div class="text-red-500 text-xs" v-show="loadDataErrorText">
         {{ loadDataErrorText }}
@@ -57,25 +57,25 @@
         ><code class="text-xs">{{ loadDataErrorStack }}</code></pre>
       </div>
       <div class="text-xs mb-4" v-show="fileList.length > 0">
-        <span class="font-bold">{{ globalCursor ? 'More than' : '' }}</span> {{ fileList.length }} file{{ fileList.length === 1 ? '' : 's' }},
-        {{ parseByteSize(allFileSize) }} total.
-        <button class="inline outline px-2 py-1 text-xs w-auto mb-0" v-show="globalCursor" @click="loadData('more')" :aria-busy="loading">Load more</button>
+        <span class="font-bold">{{ globalCursor ? 'Più di' : '' }}</span> {{ fileList.length }} file{{ fileList.length === 1 ? '' : 's' }},
+        {{ parseByteSize(allFileSize) }} totali.
+        <button class="inline outline px-2 py-1 text-xs w-auto mb-0" v-show="globalCursor" @click="loadData('more')" :aria-busy="loading">Carica di più</button>
       </div>
 
       <div class="text-xs mb-2" v-show="fileList.length > 0">
-        Sort by
+        Ordina per
         <select class="text-xs inline-block w-[10rem] mb-0" v-model="sort">
-          <option value="0">Default</option>
-          <option value="1">Date(newest first)</option>
-          <option value="2">Date(oldest first)</option>
-          <option value="3">Size(largest first)</option>
-          <option value="4">Size(smallest first)</option>
+          <option value="0">Predefinito</option>
+          <option value="1">Data (più recente)</option>
+          <option value="2">Data (meno recente)</option>
+          <option value="3">Dimensione (maggiore)</option>
+          <option value="4">Dimensione (minore)</option>
         </select>
       </div>
 
       <div class="pb-4" v-show="fileList.length > 0">
         <label for="seeFolderStructure" class="text-xs" :aria-busy="reconstructing">
-          <input type="checkbox" id="seeFolderStructure" v-model="seeFolderStructure" class="mr-2" :disabled="reconstructing"> Folder Structure
+          <input type="checkbox" id="seeFolderStructure" v-model="seeFolderStructure" class="mr-2" :disabled="reconstructing"> Struttura delle Cartelle
         </label>
       </div>
 
@@ -103,7 +103,7 @@
                 type="checkbox"
                 :id="folder.name"
                 @change="handleFolderSelect(folder.name)"
-              /> Select All</label>
+              /> Seleziona Tutto</label>
             </div>
             <div
               class="item mb-2 rounded text-sm py-1 flex items-center justify-between"
@@ -149,7 +149,7 @@
                   @click="deleteThisFile(item.key)"
                   :aria-busy="deletingKey === item.key"
                   :disabled="deletingKey === item.key"
-                >Delete
+                >Elimina
                 </button>
               </div>
             </div>

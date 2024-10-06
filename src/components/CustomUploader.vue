@@ -1,7 +1,7 @@
 <template>
   <div>
     <form action="javascript:">
-      <div class="font-bold italic">Upload Files</div>
+      <div class="font-bold italic">Carica File</div>
       <div>
         <label
           for="fileInput"
@@ -19,7 +19,7 @@
             opacity: uploading ? 0.5 : 1
           }"
           @click="handleFolder"
-          >Choose Folder 📂</label
+          >Segli Cartella 📂</label
         >
 
         <input
@@ -37,14 +37,14 @@
           @click="upload"
           :disabled="uploading"
         >
-          🔥 Upload
+          🔥 Carica
         </button>
       </div>
       <div>
         <div class="text-xs opacity-50 mb-2">
-          {{ fileList.length }} File{{ fileList.length === 1 ? '' : 's' }}, {{ parseByteSize(allFileSize) }} total.
+          {{ fileList.length }} File{{ fileList.length === 1 ? '' : 's' }}, {{ parseByteSize(allFileSize) }} totali.
           <span v-show="skipFilesWithTheSameName && !uploading">
-            Will skip
+            Sarà saltato
             <span v-show="calcSkipFiles() === fileList.length && !uploading">all. </span>
             <span v-show="calcSkipFiles() !== fileList.length"
               >{{ calcSkipFiles() }} file{{ calcSkipFiles() === 1 ? '' : 's' }}.
@@ -53,9 +53,9 @@
         </div>
         <div v-show="fileList.length + uploadedList.length > 0">
           <div class="text-center text-xs py-4" v-show="uploading || uploadedList.length > 0">
-            {{ uploadIsDone ? 'Uploaded' : 'Uploading' }} at
+            {{ uploadIsDone ? 'Caricato' : 'Caricamento' }} a 
             <span class="dark:text-green-200 text-green-800 italic font-bold">{{ globalSpeed }}</span
-            ><span v-show="uploadIsDone">, All done.</span>
+            ><span v-show="uploadIsDone">, Tutto fatto. 😎</span>
           </div>
         </div>
 
@@ -88,7 +88,7 @@
             style="border: none"
             @click="clearUploadedFiles"
           >
-            Dismiss
+            Annulla
           </button>
         </div>
         <div class="pb-4" v-show="fileList.length > 0 && !uploading">
@@ -101,7 +101,7 @@
               v-model="skipFilesWithTheSameName"
             />
             <label for="skip_uploading_if_filename_is_the_same" class="text-xs"
-              >Skip uploading files with the same name</label
+              >Salta il caricamento di file con lo stesso nome</label
             >
           </div>
           <div class="flex mb-2">
@@ -112,7 +112,7 @@
               v-model="renameFileWithRandomId"
               id="renameFileWithRandomId"
             />
-            <label class="text-xs" for="renameFileWithRandomId">Rename each file with a random ID</label>
+            <label class="text-xs" for="renameFileWithRandomId">Rinomina ciascun file con ID randomico</label>
           </div>
           <div class="flex">
             <input
@@ -122,12 +122,12 @@
               v-model="compressImagesBeforeUploading"
               id="compressImagesBeforeUploading"
             />
-            <label class="text-xs" for="compressImagesBeforeUploading"> Compress images before uploading </label>
+            <label class="text-xs" for="compressImagesBeforeUploading"> Comprimi le immagini prima del caricamento </label>
           </div>
           <div v-if="compressImagesBeforeUploading" class="text-xs pt-4 pl-2">
             <div>
               <label for="removeEXIF" class="flex items-center"
-                ><input id="removeEXIF" type="checkbox" v-model="defaultCompressOptions.removeEXIF" /> Remove
+                ><input id="removeEXIF" type="checkbox" v-model="defaultCompressOptions.removeEXIF" /> Rimuovi
                 EXIF</label
               >
             </div>
@@ -139,7 +139,7 @@
                   class="shrink-0"
                   v-model="defaultCompressOptions.convertImageType"
                 />
-                <span class="shrink-0">Covert to</span>
+                <span class="shrink-0">Converti a</span>
                 <select
                   :disabled="!defaultCompressOptions.convertImageType"
                   class="shrink-0 mb-0 ml-2 text-sm py-1 px-2"
@@ -153,7 +153,7 @@
             </div>
             <div class="flex">
               <label for="maxWidth" class="flex items-center">
-                <span class="shrink-0">Max Width:</span>
+                <span class="shrink-0">Larghezza massima:</span>
                 <input
                   type="number"
                   class="text-xs py-1 px-2 ml-1 mb-0"
@@ -166,7 +166,7 @@
             </div>
             <div class="flex">
               <label for="maxHeight" class="flex items-center">
-                <span class="shrink-0">Max Height:</span>
+                <span class="shrink-0">Altezza massima:</span>
                 <input
                   type="number"
                   class="text-xs py-1 px-2 ml-1 mb-0"
@@ -179,7 +179,7 @@
             </div>
             <div class="flex">
               <label for="quality" class="flex items-center">
-                <span class="shrink-0">Image Quality:</span>
+                <span class="shrink-0">Qualità immagine:</span>
                 <input
                   type="number"
                   class="text-xs py-1 px-2 ml-1 mb-0"
@@ -192,7 +192,7 @@
           </div>
         </div>
 
-        <div class="pt-4 pb-2 text-xs" v-show="fileList.length">Files Queued:</div>
+        <div class="pt-4 pb-2 text-xs" v-show="fileList.length">File in coda:</div>
         <div
           class="item rounded text-sm flex w-full mb-2 relative items-center"
           v-for="(item, index) in fileList"
@@ -222,7 +222,7 @@
                   style="padding: 0; border: none; background: transparent"
                   type="submit"
                 >
-                  Rename
+                  Rinomina
                 </button>
                 <button
                   type="button"
@@ -230,7 +230,7 @@
                   class="inline-block mb-0 w-auto shrink-0 outline ml-2 dark:text-white text-black text-xs"
                   style="padding: 0; border: 0"
                 >
-                  Cancel
+                  Cancella
                 </button>
               </form>
             </div>
@@ -251,8 +251,8 @@
               }"
               >{{ parseByteSize(item.size) }}
               <span v-show="uploading && !item.compressing"> / {{ progressMap[item.key] }}%</span>
-              <span v-show="item.compressing">Compressing...</span>
-              <span v-show="item.splitting && item.isMpu">Splitting Chunks...</span>
+              <span v-show="item.compressing">Compressione...</span>
+              <span v-show="item.splitting && item.isMpu">Dividendo in Chunks...</span>
             </span>
           </div>
           <div
@@ -287,7 +287,7 @@ let statusStore = useStatusStore()
 
 let browserSupportsDirectoryUpload = ref(true)
 let fileList = ref([])
-let chooseFileBtnText = ref('Choose Files')
+let chooseFileBtnText = ref('Scegli File')
 let allFileSize = ref(0)
 let progressMap = ref({})
 let statusMap = ref({})
@@ -994,9 +994,9 @@ watch(
   fileList,
   (newVal) => {
     if (newVal.length) {
-      chooseFileBtnText.value = 'Add More Files'
+      chooseFileBtnText.value = 'Aggiungi più file'
     } else {
-      chooseFileBtnText.value = 'Choose Files'
+      chooseFileBtnText.value = 'Scegli file'
     }
 
     calcAllFileSize()
