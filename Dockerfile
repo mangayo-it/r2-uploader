@@ -20,4 +20,4 @@ RUN yarn build
 EXPOSE 7896
 
 # Run the application
-CMD ["yarn", "vite", "preview", "--host", "0.0.0.0", "--port", "7896"]
+CMD ["yarn", "vite", "preview", "--host", "0.0.0.0", "--port", "8080"]
