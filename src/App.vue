@@ -12,7 +12,7 @@
       <CustomUploader></CustomUploader>
     </div>
     <div class="mt-8">
-      <FileList></FileList>
+      <RecentUpload></RecentUpload>
     </div>
   </div>
 
@@ -23,6 +23,6 @@
 
 <script setup>
 import CustomUploader from './components/CustomUploader.vue'
-import FileList from './components/FileList.vue'
+import RecentUpload from './components/RecentUpload.vue';
 import EndPointManage from './components/EndPointManage.vue'
 </script>
